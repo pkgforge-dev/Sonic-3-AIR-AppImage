@@ -33,9 +33,8 @@ echo "$VERSION" > ~/version
 localedef --no-archive -i en_US -f UTF-8 en_US.UTF-8
 mkdir -p ./AppDir/bin/data
 cd ./sonic3air
-ls
 #sed -i '113,125s/^/#/' /Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
-sed -i '113,125s/^/#/w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
+sed -i '113,125s|^|//|w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
 cd ..
 cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 cmake . \
