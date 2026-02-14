@@ -41,18 +41,18 @@ cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DISCORD=ON \
     -DBUILD_OXYGEN_ENGINEAPP=OFF
-make -j$(nproc) CXXFLAGS="-finput-charset=UTF-8"
-ls
-cd ../../
-ls
+make -j$(nproc)
+
+cd ../../../sonic3air
+
 ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate saves/scripts.bin
 ./sonic3air_linux -pack # Generates the other data bin files
-mv enginedata.bin ../../../AppDir/bin/data
-mv gamedata.bin ../../../AppDir/bin/data
-mv audiodata.bin ../../../AppDir/bin/data
-mv audioremaster.bin ../../../AppDir/bin/data
-cp data/metadata.json ../../../AppDir/bin/data
-mv -v sonic3air_linux ../../../AppDir/bin
+mv enginedata.bin ../../AppDir/bin/data
+mv gamedata.bin ../../AppDir/bin/data
+mv audiodata.bin ../../AppDir/bin/data
+mv audioremaster.bin ../../AppDir/bin/data
+cp data/metadata.json ../../AppDir/bin/data
+mv -v sonic3air_linux ../../AppDir/bin
 mv -v ./source/external/discord_game_sdk/lib/$(uname -m)/libdiscord_game_sdk.so ../../../AppDir/bin
-cp -r saves ../../../AppDir/bin
+cp -r saves ../../AppDir/bin
 mv -v config.json ../../../AppDir/bin
