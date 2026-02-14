@@ -32,7 +32,6 @@ echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin/data
 cd ./sonic3air/Oxygen/sonic3air/build/_cmake
-#mkdir -p build && cd build
 cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DISCORD=ON \
