@@ -11,8 +11,6 @@ pacman -Syu --noconfirm \
     glu            \
     libdecor       \
     libxcomposite  \
-    libxxf86vm     \
-    openssl        \
     pipewire-audio \
     pipewire-jack  \
     sdl2
