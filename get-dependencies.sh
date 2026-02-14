@@ -7,7 +7,6 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
-    clang          \
     cmake          \
     glu            \
     libdecor       \
@@ -18,7 +17,7 @@ pacman -Syu --noconfirm \
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano ! clang
+get-debloated-pkgs --add-common --prefer-nano
 
 # Comment this out if you need an AUR package
 #make-aur-package
@@ -35,11 +34,9 @@ mkdir -p ./AppDir/bin/data
 cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 #mkdir -p build && cd build
 cmake . \
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DISCORD=ON \
-    -DBUILD_OXYGEN_ENGINEAPP=OFF ..
+    -DBUILD_OXYGEN_ENGINEAPP=OFF
 make -j$(nproc) CXXFLAGS="-finput-charset=UTF-8"
 
 cd ../../
