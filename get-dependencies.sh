@@ -44,6 +44,7 @@ mkdir -p ./AppDir/bin/data
 #cd ..
 cd ./sonic3air
 patch -p1 < ../0001-fix-sdl-pipewire.patch
+patch -p1 < ../0002-disable-optimizations.patch
 cd Oxygen/sonic3air/build/_cmake
 #cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 cmake . \
