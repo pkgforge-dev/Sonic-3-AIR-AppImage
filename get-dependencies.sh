@@ -31,8 +31,10 @@ get-debloated-pkgs --add-common --prefer-nano
 echo "Making stable build of Sonic-3-AIR..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/Eukaryot/sonic3air"
-VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
-git clone --branch "$VERSION" --single-branch "$REPO" ./sonic3air
+#VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
+#git clone --branch "$VERSION" --single-branch "$REPO" ./sonic3air
+VERSION=v24.12.05.0
+git clone --branch $VERSION-test --single-branch "$REPO" ./sonic3air
 echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin/data
@@ -61,5 +63,5 @@ if [ "${ARCH}" = x86_64 ]; then
     mv -v source/external/discord_game_sdk/lib/$(uname -m)/libdiscord_game_sdk.so ../../../AppDir/bin
 fi
 cp -r saves ../../../AppDir/bin
-mv -v scripts ../../../AppDir/bin
+#mv -v scripts ../../../AppDir/bin For future versions
 mv -v config.json ../../../AppDir/bin
