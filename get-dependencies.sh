@@ -11,6 +11,7 @@ pacman -Syu --noconfirm \
     glu            \
     libdecor       \
     libxcomposite  \
+    minizip        \
     pipewire-audio \
     pipewire-jack  \
     sdl2
