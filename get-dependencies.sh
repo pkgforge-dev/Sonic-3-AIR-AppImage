@@ -44,7 +44,7 @@ make -j$(nproc)
 
 cd ../../../../sonic3air
 ls
-mv -v sonic3air_linux Oxygen/sonic3air
+mv -v sonic3air_linux ../Oxygen/sonic3air
 ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate saves/scripts.bin
 ./sonic3air_linux -pack # Generates the other data bin files
 mv enginedata.bin ../../../AppDir/bin/data
