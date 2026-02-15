@@ -31,7 +31,7 @@ get-debloated-pkgs --add-common --prefer-nano
 echo "Making stable build of Sonic-3-AIR..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/Eukaryot/sonic3air"
-VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/lethal-guitar/RigelEngine | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
+VERSION="$(git ls-remote --tags --sort="v:refname" "$REPO" | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
 git clone --branch v"$VERSION" --single-branch "$REPO" ./sonic3air
 echo "$VERSION" > ~/version
 
