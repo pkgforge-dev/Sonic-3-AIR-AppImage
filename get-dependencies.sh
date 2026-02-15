@@ -31,8 +31,8 @@ get-debloated-pkgs --add-common --prefer-nano
 echo "Making stable build of Sonic-3-AIR..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/Eukaryot/sonic3air"
-VERSION="$(git ls-remote --tags --sort="v:refname" "$REPO" | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
-git clone --branch v"$VERSION" --single-branch "$REPO" ./sonic3air
+VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
+git clone --branch "$VERSION" --single-branch "$REPO" ./sonic3air
 echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin/data
