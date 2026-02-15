@@ -30,7 +30,6 @@ VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
 git clone "$REPO" ./sonic3air
 echo "$VERSION" > ~/version
 
-localedef --no-archive -i en_US -f UTF-8 en_US.UTF-8
 mkdir -p ./AppDir/bin/data
 cd ./sonic3air
 #sed -i '113,125s/^/#/' /Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
