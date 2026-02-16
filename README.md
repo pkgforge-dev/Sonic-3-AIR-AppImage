@@ -17,7 +17,7 @@
 
 </div>
 
-### ⚠️ `Sonic_Knuckles_wSonic3.bin` within `~/.local/share/Sonic3AIR` ⚠️
+### ⚠️ Game rom within `~/.local/share/Sonic3AIR` ⚠️
 
 ---
 
