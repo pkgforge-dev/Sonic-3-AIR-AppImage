@@ -59,6 +59,8 @@ else
     #cd ..
     cd ./sonic3air
     #patch -p1 < ../0001-fix-sdl-pipewire.patch
+    ar rcs libdiscord_game_sdk.a
+    cp libdiscord_game_sdk.a Oxygen/sonic3air/source/external/discord_game_sdk/lib/x86_64/
     sed -i 's/pw_node_enum_params(node->proxy/pw_node_enum_params((struct pw_node*)node->proxy/g' framework/external/sdl/SDL2/src/audio/pipewire/SDL_pipewire.c
     cd Oxygen/sonic3air/build/_cmake
     #cd ./sonic3air/Oxygen/sonic3air/build/_cmake
@@ -69,6 +71,7 @@ else
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_OXYGEN_ENGINEAPP=OFF \
+        -DUSE_DISCORD=OFF \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DBUILD_SDL_STATIC=OFF # For stable v24.12.05.0 only
     make -j$(nproc)
