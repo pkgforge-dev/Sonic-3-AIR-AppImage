@@ -63,9 +63,10 @@ else
     cd Oxygen/sonic3air/build/_cmake
     #cd ./sonic3air/Oxygen/sonic3air/build/_cmake
     sed -i 's/set(CMAKE_CXX_FLAGS_RELEASE "-O3")/set(CMAKE_CXX_FLAGS_RELEASE "-O0")/' CMakeLists.txt
+    # -DUSE_DISCORD=OFF for aarch64
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_DISCORD=OFF \ # Off for aarch64
+        -DUSE_DISCORD=OFF \
         -DBUILD_OXYGEN_ENGINEAPP=OFF \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DBUILD_SDL_STATIC=ON # For stable v24.12.05.0 only
