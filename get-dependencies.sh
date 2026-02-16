@@ -65,10 +65,10 @@ else
     sed -i 's/set(CMAKE_CXX_FLAGS_RELEASE "-O3")/set(CMAKE_CXX_FLAGS_RELEASE "-O0")/' CMakeLists.txt
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_DISCORD=ON \
+        -DUSE_DISCORD=OFF \ # Off for aarch64
         -DBUILD_OXYGEN_ENGINEAPP=OFF \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DBUILD_SDL_STATIC=OFF #For stable v24.12.05.0 only
+        -DBUILD_SDL_STATIC=ON # For stable v24.12.05.0 only
     make -j$(nproc)
 
     cd ../../../../sonic3air
