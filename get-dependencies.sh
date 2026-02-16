@@ -40,6 +40,7 @@ if [ "${ARCH}" = x86_64 ]; then
     rm -f setup_linux.sh
     rm -rf bonus
     rm -rf doc
+    rm -rf data/icon.png
     mv -v data ../AppDir/bin
     mv -v libdiscord_game_sdk.so ../AppDir/bin
     mv -v config.json ../AppDir/bin
