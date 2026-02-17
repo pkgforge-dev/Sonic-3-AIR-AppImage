@@ -66,6 +66,10 @@ else
     #cd ./sonic3air/Oxygen/sonic3air/build/_cmake
     #sed -i 's/set(CMAKE_CXX_FLAGS_RELEASE "-O3")/set(CMAKE_CXX_FLAGS_RELEASE "-O0")/' CMakeLists.txt
     # -DUSE_DISCORD=OFF for aarch64
+    sed -i -e 's|link_directories("${WORKSPACE_DIR}/Oxygen/|#&|' \
+       -e 's|target_link_libraries(discord_game_sdk_source|#&|' \
+       -e 's|set(CMAKE_EXE_LINKER_FLAGS.*-rpath|#&|' \
+       -e 's|target_link_libraries(Sonic3AIR discord_game_sdk_source|#&|' CMakeLists.txt
     export CFLAGS="${CFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
     export CXXFLAGS="${CXXFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
     cmake . \
