@@ -6,3 +6,4 @@ Encoding=UTF-8
 Exec=sonic3air_linux
 Icon=sonic3air
 Terminal=false
+StartupWMClass=sonic3air_linux
