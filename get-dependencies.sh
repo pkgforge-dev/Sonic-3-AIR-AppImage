@@ -46,11 +46,7 @@ else
     echo "$VERSION" > ~/version
 
     mkdir -p ./AppDir/bin/data
-    cd ./sonic3air
-    #sed -i 's/pw_node_enum_params(node->proxy/pw_node_enum_params((struct pw_node*)node->proxy/g' framework/external/sdl/SDL2/src/audio/pipewire/SDL_pipewire.c
-    cd Oxygen/sonic3air/build/_cmake
-    #export CFLAGS="${CFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
-    #export CXXFLAGS="${CXXFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
+    cd ./sonic3air/Oxygen/sonic3air/build/_cmake
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_DISCORD=OFF \
@@ -60,9 +56,10 @@ else
     cd ../../../../sonic3air
     mv -v sonic3air_linux ../Oxygen/sonic3air
     cd ../Oxygen/sonic3air
-    ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate data/scripts.bin
+    ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate scripts.bin
     ./sonic3air_linux -pack # Generates the other data bin files
-    mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json data/scripts.bin ../../../AppDir/bin/data
-    mv -v sonic3air_linux saves scripts config.json ../../../AppDir/bin
+    find . -name scripts.bin -type f -exec sh -c 'printf "Moving: %s\n" "$1"; mv "$1" ../../../AppDir/bin/data' sh {} \;
+    mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json ../../../AppDir/bin/data
+    mv -v sonic3air_linux config.json ../../../AppDir/bin
 fi
 
