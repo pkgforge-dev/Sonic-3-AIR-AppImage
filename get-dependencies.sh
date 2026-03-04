@@ -6,27 +6,17 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm \
-    cmake          \
-    glu            \
-    libdecor       \
-    libxcomposite  \
-    minizip        \
-    sdl2
+pacman -Syu --noconfirm cmake glu libxcomposite minizip-ng sdl2-compat
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+get-debloated-pkgs --add-common --prefer-nano libdecor-mini
 
-# Comment this out if you need an AUR package
-#make-aur-package
-
-# If the application needs to be manually built that has to be done down here
-VERSION=v26.02.28.0
+VERSION=v26.03.28.0
 if [ "${ARCH}" = x86_64 ]; then
     echo "Dowload last stable build of Sonic 3 A.I.R. for Linux..."
     echo "---------------------------------------------------------------"
-    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
+    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-stable/sonic3air_game.tar.gz
     echo "$VERSION" > ~/version
 
     tar -xvf sonic3air_game.tar.gz
@@ -42,7 +32,7 @@ else
     REPO="https://github.com/Eukaryot/sonic3air"
     #VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
     #git clone --branch "$VERSION" --single-branch "$REPO" ./sonic3air
-    git clone --branch $VERSION-preview --single-branch "$REPO" ./sonic3air
+    git clone --branch $VERSION-stable --single-branch "$REPO" ./sonic3air
     echo "$VERSION" > ~/version
 
     mkdir -p ./AppDir/bin/data
@@ -56,13 +46,11 @@ else
     cd ../../../../sonic3air
     mv -v sonic3air_linux ../Oxygen/sonic3air
     cd ../Oxygen/sonic3air
-    ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate scripts.bin
-    ./sonic3air_linux -pack # Generates the other data bin files
+    ./sonic3air_linux -pack # Generates the data bin files
     mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json ../../../AppDir/bin/data
     mv -v sonic3air_linux config.json ../../../AppDir/bin
-    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
+    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-stable/sonic3air_game.tar.gz
     tar -xvf sonic3air_game.tar.gz --wildcards "*/scripts.bin"
-    #find . -name "scripts.bin" -exec mv -v {} ../../../AppDir/bin/data/ \;
     mv -v sonic3air_game/data/scripts.bin ../../../AppDir/bin/data
     rm -f *.tar.gz
     rm -rf sonic3air_game
