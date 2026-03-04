@@ -34,15 +34,8 @@ if [ "${ARCH}" = x86_64 ]; then
     mkdir -p ./AppDir/bin
 
     cd ./sonic3air_game
-    rm -f Manual.pdf
-    rm -f setup_linux.sh
-    rm -rf bonus
-    rm -rf doc
-    rm -rf data/icon.png
-    mv -v data ../AppDir/bin
-    mv -v libdiscord_game_sdk.so ../AppDir/bin
-    mv -v config.json ../AppDir/bin
-    mv -v sonic3air_linux ../AppDir/bin
+    rm -rf Manual.pdf setup_linux.sh bonus doc data/icon.png
+    mv -v data libdiscord_game_sdk.so config.json sonic3air_linux ../AppDir/bin
 else
     echo "Making stable build of Sonic-3-AIR for aarch64..."
     echo "---------------------------------------------------------------"
