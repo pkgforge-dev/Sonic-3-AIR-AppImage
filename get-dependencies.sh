@@ -22,10 +22,10 @@ get-debloated-pkgs --add-common --prefer-nano
 #make-aur-package
 
 # If the application needs to be manually built that has to be done down here
+VERSION=v26.02.28.0
 if [ "${ARCH}" = x86_64 ]; then
     echo "Dowload last stable build of Sonic-3-AIR for Linux..."
     echo "---------------------------------------------------------------"
-    VERSION=v26.02.28.0
     wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
     echo "$VERSION" > ~/version
 
@@ -42,7 +42,6 @@ else
     REPO="https://github.com/Eukaryot/sonic3air"
     #VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
     #git clone --branch "$VERSION" --single-branch "$REPO" ./sonic3air
-    VERSION=v26.02.28.0
     git clone --branch $VERSION-preview --single-branch "$REPO" ./sonic3air
     echo "$VERSION" > ~/version
 
@@ -51,7 +50,7 @@ else
     #sed -i '113,125s|^|//|w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
     #cd ..
     cd ./sonic3air
-    sed -i 's/pw_node_enum_params(node->proxy/pw_node_enum_params((struct pw_node*)node->proxy/g' framework/external/sdl/SDL2/src/audio/pipewire/SDL_pipewire.c
+    #sed -i 's/pw_node_enum_params(node->proxy/pw_node_enum_params((struct pw_node*)node->proxy/g' framework/external/sdl/SDL2/src/audio/pipewire/SDL_pipewire.c
     cd Oxygen/sonic3air/build/_cmake
     #cd ./sonic3air/Oxygen/sonic3air/build/_cmake
     #sed -i 's/set(CMAKE_CXX_FLAGS_RELEASE "-O3")/set(CMAKE_CXX_FLAGS_RELEASE "-O0")/' CMakeLists.txt
@@ -61,7 +60,6 @@ else
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_DISCORD=false \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DSDL_SHARED=ON \
         -DSDL_STATIC=OFF # For stable v24.12.05.0 only
     make -j$(nproc)
@@ -71,14 +69,7 @@ else
     cd ../Oxygen/sonic3air
     ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate saves/scripts.bin
     ./sonic3air_linux -pack # Generates the other data bin files
-    mv enginedata.bin ../../../AppDir/bin/data
-    mv gamedata.bin ../../../AppDir/bin/data
-    mv audiodata.bin ../../../AppDir/bin/data
-    mv audioremaster.bin ../../../AppDir/bin/data
-    cp data/metadata.json ../../../AppDir/bin/data
-    mv -v sonic3air_linux ../../../AppDir/bin
-    cp -r saves ../../../AppDir/bin
-    #mv -v scripts ../../../AppDir/bin For future versions
-    mv -v config.json ../../../AppDir/bin
+    mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json ../../../AppDir/bin/data
+    mv -v sonic3air_linux saves/scripts.bin saves scripts config.json ../../../AppDir/bin
 fi
 
