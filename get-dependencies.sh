@@ -25,7 +25,7 @@ get-debloated-pkgs --add-common --prefer-nano
 if [ "${ARCH}" = x86_64 ]; then
     echo "Dowload last stable build of Sonic-3-AIR for Linux..."
     echo "---------------------------------------------------------------"
-    VERSION=v24.12.05.0
+    VERSION=v26.02.28.0
     wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-test/sonic3air_game.tar.gz
     echo "$VERSION" > ~/version
 
@@ -49,7 +49,7 @@ else
     REPO="https://github.com/Eukaryot/sonic3air"
     #VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
     #git clone --branch "$VERSION" --single-branch "$REPO" ./sonic3air
-    VERSION=v24.12.05.0
+    VERSION=v26.02.28.0
     git clone --branch $VERSION-test --single-branch "$REPO" ./sonic3air
     echo "$VERSION" > ~/version
 
