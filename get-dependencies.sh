@@ -58,8 +58,9 @@ else
     cd ../Oxygen/sonic3air
     ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate scripts.bin
     ./sonic3air_linux -pack # Generates the other data bin files
-    find . -name scripts.bin -type f -exec sh -c 'printf "Moving: %s\n" "$1"; mv "$1" ../../../AppDir/bin/data' sh {} \;
     mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json ../../../AppDir/bin/data
     mv -v sonic3air_linux config.json ../../../AppDir/bin
+    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
+    tar -xvf sonic3air_game.tar.gz data/scripts.bin --strip-components=1 -C ../../../AppDir/bin/data
 fi
 
