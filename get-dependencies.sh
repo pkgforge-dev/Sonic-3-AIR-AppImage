@@ -24,7 +24,7 @@ get-debloated-pkgs --add-common --prefer-nano
 # If the application needs to be manually built that has to be done down here
 VERSION=v26.02.28.0
 if [ "${ARCH}" = x86_64 ]; then
-    echo "Dowload last stable build of Sonic-3-AIR for Linux..."
+    echo "Dowload last stable build of Sonic 3 A.I.R. for Linux..."
     echo "---------------------------------------------------------------"
     wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
     echo "$VERSION" > ~/version
@@ -37,7 +37,7 @@ if [ "${ARCH}" = x86_64 ]; then
     rm -rf Manual.pdf setup_linux.sh bonus doc data/icon.png
     mv -v data libdiscord_game_sdk.so config.json sonic3air_linux ../AppDir/bin
 else
-    echo "Making stable build of Sonic-3-AIR for aarch64..."
+    echo "Making stable build of Sonic 3 A.I.R. for aarch64..."
     echo "---------------------------------------------------------------"
     REPO="https://github.com/Eukaryot/sonic3air"
     #VERSION=$(git ls-remote --tags --sort="v:refname" "$REPO" | grep -v "\^{}" | tail -n1 | sed 's|.*/||')
