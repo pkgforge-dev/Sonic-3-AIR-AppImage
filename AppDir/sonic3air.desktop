@@ -4,6 +4,6 @@ Comment=A fan-made remaster of Sonic 3 & Knuckles
 Type=Application
 Encoding=UTF-8
 Exec=sonic3air_linux
-Icon=sonic3air
+Icon=icon
 Terminal=false
 StartupWMClass=sonic3air_linux
