@@ -26,7 +26,7 @@ VERSION=v26.03.28.0
 if [ "${ARCH}" = x86_64 ]; then
     echo "Dowload last stable build of Sonic 3 A.I.R. for Linux..."
     echo "---------------------------------------------------------------"
-    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
+    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-stable/sonic3air_game.tar.gz
     echo "$VERSION" > ~/version
 
     tar -xvf sonic3air_game.tar.gz
