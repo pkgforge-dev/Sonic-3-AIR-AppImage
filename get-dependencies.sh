@@ -22,7 +22,7 @@ get-debloated-pkgs --add-common --prefer-nano
 #make-aur-package
 
 # If the application needs to be manually built that has to be done down here
-VERSION=v26.02.28.0
+VERSION=v26.03.28.0
 if [ "${ARCH}" = x86_64 ]; then
     echo "Dowload last stable build of Sonic 3 A.I.R. for Linux..."
     echo "---------------------------------------------------------------"
