@@ -59,7 +59,7 @@ else
     ./sonic3air_linux -pack # Generates the data bin files
     mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json ../../../AppDir/bin/data
     mv -v sonic3air_linux config.json ../../../AppDir/bin
-    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
+    wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-stable/sonic3air_game.tar.gz
     tar -xvf sonic3air_game.tar.gz --wildcards "*/scripts.bin"
     mv -v sonic3air_game/data/scripts.bin ../../../AppDir/bin/data
     rm -f *.tar.gz
