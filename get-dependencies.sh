@@ -7,16 +7,15 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
-    cmake          \
-    glu            \
-    libdecor       \
-    libxcomposite  \
-    minizip        \
+    cmake         \
+    glu           \
+    libxcomposite \
+    minizip       \
     sdl2
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+get-debloated-pkgs --add-common --prefer-nano libdecor-mini
 
 VERSION=v26.03.28.0
 if [ "${ARCH}" = x86_64 ]; then
