@@ -11,7 +11,7 @@ pacman -Syu --noconfirm \
     glu           \
     libxcomposite \
     minizip       \
-    sdl2
+    sdl2-compat
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
