@@ -6,12 +6,7 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm \
-    cmake         \
-    glu           \
-    libxcomposite \
-    minizip       \
-    sdl2-compat
+pacman -Syu --noconfirm cmake glu libxcomposite minizip-ng sdl2-compat
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
